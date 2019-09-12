@@ -3,18 +3,21 @@ import React from 'react'
 export default ({ taskList, deleteTask, completeTask }) => {
 
     return (
-        taskList.map(todo => (
-            <ul className='tasks__list' key={todo.id}>
-                <li className='tasks__list-item'>
-                    {todo.task}
-                </li>
-                <button className='tasks__list-btn'
-                    onClick={() => deleteTask(todo.task)}>Delete
-                </button>
-                <button className='tasks__list-btn'
-                    onClick={() => completeTask(todo.task)}>Redo
-                </button>
-            </ul>
-        ))
+        <div className='tasks'>
+            <h3 className='tasks-title'>Finished Tasks</h3>
+            {taskList.map(todo => (
+                <ul className='tasks__list' key={todo.id}>
+                    <li className='tasks__list-item'>
+                        {todo.task}
+                    </li>
+                    <button className='tasks__list-btn'
+                        onClick={() => deleteTask(todo.task)}>Delete
+                    </button>
+                    <button className='tasks__list-btn'
+                        onClick={() => completeTask(todo.task)}>Redo Task
+                    </button>
+                </ul>
+            ))}
+        </div>
     )
 }

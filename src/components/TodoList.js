@@ -11,22 +11,22 @@ class TodoList extends Component {
             taskList: [
                 {
                     id: uuid(),
-                    task: 'grocery shopping',
-                    isDone: false,
-                },
-                {
-                    id: uuid(),
-                    task: 'workout',
-                    isDone: false,
-                },
-                {
-                    id: uuid(),
                     task: 'learn React',
                     isDone: false,
                 },
                 {
                     id: uuid(),
                     task: 'practice coding',
+                    isDone: false,
+                },
+                {
+                    id: uuid(),
+                    task: 'grocery shopping',
+                    isDone: false,
+                },
+                {
+                    id: uuid(),
+                    task: 'workout',
                     isDone: false,
                 },
             ],
@@ -82,20 +82,14 @@ class TodoList extends Component {
             <div className='TodoList'>
                 <h1>Todo List</h1>
                 <TodoListForm addTask={this.addTask} />
-                <div className='tasks'>
-                    <h3 className='tasks-title'>Unfinished Tasks</h3>
-                    <UnfinishedTasks taskList={this.tasksUnfinished()}
-                        deleteTask={this.deleteTask}
-                        completeTask={this.toggleCompleteTask}
-                    />
-                </div>
-                <div className='tasks'>
-                    <h3 className='tasks-title'>Finished Tasks</h3>
-                    <FinishedTasks taskList={this.tasksFinished()}
-                        deleteTask={this.deleteTask}
-                        completeTask={this.toggleCompleteTask}
-                    />
-                </div>
+                <UnfinishedTasks taskList={this.tasksUnfinished()}
+                    deleteTask={this.deleteTask}
+                    completeTask={this.toggleCompleteTask}
+                />
+                <FinishedTasks taskList={this.tasksFinished()}
+                    deleteTask={this.deleteTask}
+                    completeTask={this.toggleCompleteTask}
+                />
             </div>
         )
     }
