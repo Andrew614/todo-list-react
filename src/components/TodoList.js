@@ -34,6 +34,10 @@ class TodoList extends Component {
         ))
     }
 
+    handleClick = taskToDelete => {
+        this.deleteTask(taskToDelete)
+    }
+
     renderTaskList = () => {
         return (
             this.state.taskList.map(todo => (
@@ -42,7 +46,7 @@ class TodoList extends Component {
                         {todo.task}
                     </li>
                     <button className='tasks__list-btn'
-                        onClick={() => this.deleteTask(todo.task)}>X
+                        onClick={() => this.handleClick(todo.task)}>X
                     </button>
                 </div>
             ))
