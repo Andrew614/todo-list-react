@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import uuid from 'uuid'
 import TodoListForm from './TodoListForm'
+import UnfinishedTasks from './UnfinishedTasks'
+import FinishedTasks from './FinishedTasks'
 
 class TodoList extends Component {
     constructor(props) {
@@ -10,18 +12,22 @@ class TodoList extends Component {
                 {
                     id: uuid(),
                     task: 'grocery shopping',
+                    isDone: false,
                 },
                 {
                     id: uuid(),
                     task: 'workout',
+                    isDone: false,
                 },
                 {
                     id: uuid(),
                     task: 'learn React',
+                    isDone: false,
                 },
                 {
                     id: uuid(),
                     task: 'practice coding',
+                    isDone: false,
                 },
             ],
         }
@@ -30,13 +36,29 @@ class TodoList extends Component {
     addTask = (task) => {
         const taskToAdd = {
             id: uuid(),
-            ...task
+            task: task.task,
+            isDone: false,
         }
         this.setState(prevState => (
             {
-                taskList: [...this.state.taskList, taskToAdd]
+                taskList: prevState.taskList.concat(taskToAdd)
+                //taskList: [...this.state.taskList, taskToAdd]
             }
         ))
+    }
+
+    toggleCompleteTask = (task) => {
+        this.setState(prevState => {
+            const taskToUpdate = prevState.taskList.find(todo => todo.task === task)
+            const updatedTask = prevState.taskList.filter(todo => todo.task !== task).concat({
+                id: taskToUpdate.id,
+                task: taskToUpdate.task,
+                isDone: !taskToUpdate.isDone,
+            })
+            return {
+                taskList: updatedTask
+            }
+        })
     }
 
     deleteTask = (taskToDelete) => {
@@ -47,31 +69,33 @@ class TodoList extends Component {
         ))
     }
 
-    handleClick = taskToDelete => {
-        this.deleteTask(taskToDelete)
-    }
+    tasksFinished = () => (
+        this.state.taskList.filter(task => task.isDone)
+    )
 
-    renderTaskList = () => {
-        return (
-            this.state.taskList.map(todo => (
-                <div className='tasks__list' key={todo.id}>
-                    <li className='tasks__list-item'>
-                        {todo.task}
-                    </li>
-                    <button className='tasks__list-btn'
-                        onClick={() => this.handleClick(todo.task)}>X
-                    </button>
-                </div>
-            ))
-        )
-    }
+    tasksUnfinished = () => (
+        this.state.taskList.filter(task => !task.isDone)
+    )
 
     render() {
         return (
             <div className='TodoList'>
                 <h1>Todo List</h1>
                 <TodoListForm addTask={this.addTask} />
-                <ul className='tasks'>{this.renderTaskList()}</ul>
+                <div className='tasks'>
+                    <h3 className='tasks-title'>Unfinished Tasks</h3>
+                    <UnfinishedTasks taskList={this.tasksUnfinished()}
+                        deleteTask={this.deleteTask}
+                        completeTask={this.toggleCompleteTask}
+                    />
+                </div>
+                <div className='tasks'>
+                    <h3 className='tasks-title'>Finished Tasks</h3>
+                    <FinishedTasks taskList={this.tasksFinished()}
+                        deleteTask={this.deleteTask}
+                        completeTask={this.toggleCompleteTask}
+                    />
+                </div>
             </div>
         )
     }
