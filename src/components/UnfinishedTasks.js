@@ -10,12 +10,14 @@ export default ({ taskList, deleteTask, completeTask }) => {
                     <li className='tasks__list-item'>
                         {todo.task}
                     </li>
-                    <button className='tasks__list-btn'
-                        onClick={() => deleteTask(todo.task)}>Delete
-                    </button>
-                    <button className='tasks__list-btn'
-                        onClick={() => completeTask(todo.task)}>Completed
-                    </button>
+                    <div className='tasks__list-buttons'>
+                        <button className='tasks__list-btn'
+                            onClick={() => deleteTask(todo.task)}>Delete
+                        </button>
+                        <button className='tasks__list-btn'
+                            onClick={() => completeTask(todo.task)}>Completed
+                        </button>
+                    </div>
                 </ul>
             ))}
         </div>

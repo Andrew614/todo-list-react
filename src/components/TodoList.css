@@ -1,0 +1,53 @@
+h1, .TodoListForm {
+    font-family: raleway;
+    font-weight: 800;
+    margin: 1rem;
+    text-align: center;
+}
+
+label {
+    margin: .5rem;
+}
+
+.tasks {
+    border: 1px solid #C0C0C0;
+    border-radius: 1rem;
+    background-color: #DCDCDC;
+    margin: .5rem;
+    max-width: 45vw;
+    padding: 2rem;
+}
+
+.tasks-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tasks__list {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tasks__list-btn {
+    margin: .25rem .25rem;
+    margin-bottom: 1rem;
+    padding: .5rem;
+}
+
+.tasks__list-btn:hover {
+    background-color: #C0C0C0;
+    cursor: pointer;
+}
+
+.tasks__list-buttons {
+    display: flex;
+}
+
+.tasks__list-item {
+    margin-right: .25rem;
+}
+
+.tasks-title {
+    margin-bottom: 1rem;
+}

@@ -3,6 +3,7 @@ import uuid from 'uuid'
 import TodoListForm from './TodoListForm'
 import UnfinishedTasks from './UnfinishedTasks'
 import FinishedTasks from './FinishedTasks'
+import './TodoList.css'
 
 class TodoList extends Component {
     constructor(props) {
@@ -28,6 +29,16 @@ class TodoList extends Component {
                     id: uuid(),
                     task: 'workout',
                     isDone: false,
+                },
+                {
+                    id: uuid(),
+                    task: 'go to the movies',
+                    isDone: true,
+                },
+                {
+                    id: uuid(),
+                    task: 'play a round of chess',
+                    isDone: true,
                 },
             ],
         }
@@ -82,14 +93,16 @@ class TodoList extends Component {
             <div className='TodoList'>
                 <h1>Todo List</h1>
                 <TodoListForm addTask={this.addTask} />
-                <UnfinishedTasks taskList={this.tasksUnfinished()}
-                    deleteTask={this.deleteTask}
-                    completeTask={this.toggleCompleteTask}
-                />
-                <FinishedTasks taskList={this.tasksFinished()}
-                    deleteTask={this.deleteTask}
-                    completeTask={this.toggleCompleteTask}
-                />
+                <div className='tasks-container'>
+                    <UnfinishedTasks taskList={this.tasksUnfinished()}
+                        deleteTask={this.deleteTask}
+                        completeTask={this.toggleCompleteTask}
+                    />
+                    <FinishedTasks taskList={this.tasksFinished()}
+                        deleteTask={this.deleteTask}
+                        completeTask={this.toggleCompleteTask}
+                    />
+                </div>
             </div>
         )
     }
