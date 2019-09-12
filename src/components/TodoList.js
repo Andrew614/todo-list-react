@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import uuid from 'uuid'
+import TodoListForm from './TodoListForm'
 
 class TodoList extends Component {
     constructor(props) {
@@ -24,6 +25,18 @@ class TodoList extends Component {
                 },
             ],
         }
+    }
+
+    addTask = (task) => {
+        const taskToAdd = {
+            id: uuid(),
+            ...task
+        }
+        this.setState(prevState => (
+            {
+                taskList: [...this.state.taskList, taskToAdd]
+            }
+        ))
     }
 
     deleteTask = (taskToDelete) => {
@@ -55,8 +68,9 @@ class TodoList extends Component {
 
     render() {
         return (
-            <div>
+            <div className='TodoList'>
                 <h1>Todo List</h1>
+                <TodoListForm addTask={this.addTask} />
                 <ul className='tasks'>{this.renderTaskList()}</ul>
             </div>
         )
