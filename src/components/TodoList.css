@@ -1,6 +1,5 @@
-h1, .TodoListForm {
+h1, h3, .TodoListForm {
     font-family: raleway;
-    font-weight: 800;
     margin: 1rem;
     text-align: center;
 }
@@ -13,9 +12,11 @@ label {
     border: 1px solid #C0C0C0;
     border-radius: 1rem;
     background-color: #DCDCDC;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     margin: .5rem;
-    max-width: 45vw;
-    padding: 2rem;
+    width: 40vw;
 }
 
 .tasks-container {
@@ -24,10 +25,10 @@ label {
 }
 
 .task-finished {
-    text-decoration: line-through;
+    text-decoration: line-through
 }
 
-.tasks__list {
+.tasks__list-items {
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -52,6 +53,32 @@ label {
     margin-right: .25rem;
 }
 
+.tasks__list-items {
+    padding: 0  1rem;
+}
+
 .tasks-title {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    text-decoration: underline
+}
+
+.UnfinishedTask:nth-child(even), .FinishedTask:nth-child(even) {
+    background-color: #fff;
+}
+
+.update-form {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    padding: 0  .25rem;
+}
+
+.update-form button {
+    font-size: 1rem;
+}
+
+.update-form input {
+    font-size: 1rem;
+    width: 100%
 }
