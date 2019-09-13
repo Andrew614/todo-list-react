@@ -23,11 +23,13 @@ class TodoListForm extends Component {
     render() {
         return (
             <form className='TodoListForm' onSubmit={this.handleSubmit}>
-                <label htmlFor='task'>Task to do</label>
+                <label htmlFor='task'>Task to complete</label>
                 <input type="text"
                     id='task'
                     name='task'
                     value={this.state.task}
+                    placeholder='enter task'
+                    required
                     onChange={this.handleChange}
                 />
                 <button>Add Task</button>
