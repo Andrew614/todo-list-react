@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import uuid from 'uuid'
 import TodoListForm from './TodoListForm'
-import UnfinishedTask from './UnfinishedTask'
-import FinishedTask from './FinishedTask'
+import Todo from './Todo'
 import './TodoList.css'
 
 class TodoList extends Component {
@@ -139,9 +138,9 @@ class TodoList extends Component {
                         <h3 className='tasks-title'>Unfinished Tasks</h3>
                         <div className='tasks__list'>
                             {this.tasksUnfinished().map(task =>
-                                <UnfinishedTask key={task.id} todo={task}
+                                <Todo key={task.id} todo={task}
                                     deleteTask={this.deleteTask}
-                                    completeTask={this.toggleComplete}
+                                    toggleComplete={this.toggleComplete}
                                     editTask={this.edit}
                                     updateTask={this.updateTask}
                                 />
@@ -152,9 +151,9 @@ class TodoList extends Component {
                         <h3 className='tasks-title'>Finished Tasks</h3>
                         <div className='tasks__list'>
                             {this.tasksFinished().map(task =>
-                                <FinishedTask key={task.id} todo={task}
+                                <Todo key={task.id} todo={task}
                                     deleteTask={this.deleteTask}
-                                    redoTask={this.toggleComplete}
+                                    toggleComplete={this.toggleComplete}
                                     editTask={this.edit}
                                     updateTask={this.updateTask}
                                 />

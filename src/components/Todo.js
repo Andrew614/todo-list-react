@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Task extends Component {
+class Todo extends Component {
 
     constructor(props) {
         super(props)
@@ -21,7 +21,7 @@ class Task extends Component {
     }
 
     render() {
-        const { todo, deleteTask, toggleTask, editTask } = this.props
+        const { todo, deleteTask, toggleComplete, editTask } = this.props
         const cls = todo.isComplete ? 'tasks__list-item task-finished' : 'tasks__list-item'
         const display =
             todo.isEditing ?
@@ -44,7 +44,7 @@ class Task extends Component {
                             onClick={() => deleteTask(todo.task)}>Delete
                         </button>
                         <button className='tasks__list-btn'
-                            onClick={() => toggleTask(todo.task)}>Redo Task
+                            onClick={() => toggleComplete(todo.task)}>Redo Task
                         </button>
                         <button className='tasks__list-btn'
                             onClick={() => editTask(todo.task)}>Edit
@@ -53,11 +53,11 @@ class Task extends Component {
                 </section>
 
         return (
-            <div className='Task'>
+            <div className='FinishedTask'>
                 {display}
             </div>
         )
     }
 }
 
-export default Task
+export default Todo
