@@ -139,7 +139,7 @@ class TodoList extends Component {
                         <h3 className='tasks-title'>Unfinished Tasks</h3>
                         <div className='tasks__list'>
                             {this.tasksUnfinished().map(task =>
-                                <FinishedTask key={task.id} todo={task}
+                                <UnfinishedTask key={task.id} todo={task}
                                     deleteTask={this.deleteTask}
                                     completeTask={this.toggleComplete}
                                     editTask={this.edit}
