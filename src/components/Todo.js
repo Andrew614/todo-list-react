@@ -41,13 +41,13 @@ class Todo extends Component {
                     </p>
                     <div className='tasks__list-buttons'>
                         <button className='tasks__list-btn'
-                            onClick={() => deleteTask(todo.task)}>Delete
+                            onClick={() => deleteTask(todo.id)}>Delete
                         </button>
                         <button className='tasks__list-btn'
-                            onClick={() => toggleComplete(todo.task)}>Redo Task
+                            onClick={() => toggleComplete(todo.id)}>Redo Task
                         </button>
                         <button className='tasks__list-btn'
-                            onClick={() => editTask(todo.task)}>Edit
+                            onClick={() => editTask(todo.id)}>Edit
                         </button>
                     </div>
                 </section>
