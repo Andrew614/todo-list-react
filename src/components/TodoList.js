@@ -58,20 +58,6 @@ class TodoList extends Component {
         ))
     }
 
-    toggleCompleteTask = (task) => {
-        this.setState(prevState => {
-            const taskToUpdate = prevState.taskList.find(todo => todo.task === task)
-            const updatedTask = prevState.taskList.filter(todo => todo.task !== task).concat({
-                id: taskToUpdate.id,
-                task: taskToUpdate.task,
-                isDone: !taskToUpdate.isDone,
-            })
-            return {
-                taskList: updatedTask
-            }
-        })
-    }
-
     deleteTask = (taskToDelete) => {
         this.setState(prevState => (
             {
@@ -88,6 +74,20 @@ class TodoList extends Component {
         this.state.taskList.filter(task => !task.isDone)
     )
 
+    toggleCompleteTask = (task) => {
+        this.setState(prevState => {
+            const taskToUpdate = prevState.taskList.find(todo => todo.task === task)
+            const updatedTask = prevState.taskList.filter(todo => todo.task !== task).concat({
+                id: taskToUpdate.id,
+                task: taskToUpdate.task,
+                isDone: !taskToUpdate.isDone,
+            })
+            return {
+                taskList: updatedTask
+            }
+        })
+    }
+
     render() {
         return (
             <div className='TodoList'>
@@ -100,7 +100,7 @@ class TodoList extends Component {
                     />
                     <FinishedTasks taskList={this.tasksFinished()}
                         deleteTask={this.deleteTask}
-                        completeTask={this.toggleCompleteTask}
+                        redoTask={this.toggleCompleteTask}
                     />
                 </div>
             </div>
