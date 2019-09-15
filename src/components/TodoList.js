@@ -56,30 +56,30 @@ class TodoList extends Component {
             isComplete: false,
             isEditing: false,
         }
-        this.setState(prevState => (
+        this.setState(currentState => (
             {
-                taskList: prevState.taskList.concat(taskToAdd)
+                taskList: currentState.taskList.concat(taskToAdd)
                 //taskList: [...this.state.taskList, taskToAdd]
             }
         ))
     }
 
     deleteTask = (taskToDeleteId) => {
-        this.setState(prevState => (
+        this.setState(currentState => (
             {
-                taskList: prevState.taskList.filter(todo => todo.id !== taskToDeleteId)
+                taskList: currentState.taskList.filter(todo => todo.id !== taskToDeleteId)
             }
         ))
     }
 
     edit = (taskToUpdateId) => {
-        this.setState(prevState => {
-            const updatedTask = prevState.taskList.map((todo, index) => (
-                todo.id === taskToUpdateId ? prevState.taskList[index] = {
-                    ...prevState.taskList[index],
+        this.setState(currentState => {
+            const updatedTask = currentState.taskList.map((todo, index) => (
+                todo.id === taskToUpdateId ? currentState.taskList[index] = {
+                    ...currentState.taskList[index],
                     isEditing: true
                 }
-                    : { ...prevState.taskList[index] }
+                    : { ...currentState.taskList[index] }
 
             ))
 
@@ -98,9 +98,9 @@ class TodoList extends Component {
     )
 
     toggleComplete = (taskId) => {
-        this.setState(prevState => {
-            const taskToUpdate = prevState.taskList.find(todo => todo.id === taskId)
-            const updatedTask = prevState.taskList.filter(todo => todo.id !== taskId).concat({
+        this.setState(currentState => {
+            const taskToUpdate = currentState.taskList.find(todo => todo.id === taskId)
+            const updatedTask = currentState.taskList.filter(todo => todo.id !== taskId).concat({
                 ...taskToUpdate,
                 isComplete: !taskToUpdate.isComplete,
             })
@@ -111,14 +111,14 @@ class TodoList extends Component {
     }
 
     updateTask = (taskToUpdateId, taskToUpdate) => {
-        this.setState(prevState => {
-            const updatedTask = prevState.taskList.map((todo, index) => (
-                todo.id === taskToUpdateId ? prevState.taskList[index] = {
-                    ...prevState.taskList[index],
+        this.setState(currentState => {
+            const updatedTask = currentState.taskList.map((todo, index) => (
+                todo.id === taskToUpdateId ? currentState.taskList[index] = {
+                    ...currentState.taskList[index],
                     task: taskToUpdate,
                     isEditing: false
                 }
-                    : { ...prevState.taskList[index] }
+                    : { ...currentState.taskList[index] }
 
             ))
 
